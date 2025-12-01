@@ -43,4 +43,16 @@ public class Hylde {
     public Reol getReol() {
         return reol;
     }
+
+    @Override
+    public String toString() {
+        return "Hylde{" +
+                "hyldeId='" + hyldeId + '\'' +
+                ", kapacitet=" + kapacitet +
+                ", placering='" + placering + '\'' +
+                ", hyldeType='" + hyldeType + '\'' +
+                ", fade=" + fade +
+                ", reol=" + reol +
+                '}';
+    }
 }

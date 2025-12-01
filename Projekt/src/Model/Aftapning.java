@@ -19,4 +19,38 @@ public class Aftapning {
         this.destillat = destillat;
         this.whiskyProdukt = whiskyProdukt;
     }
+
+    public String getAftapningsNr() {
+        return aftapningsNr;
+    }
+
+    public double getAlkoholProcent() {
+        return alkoholProcent;
+    }
+
+    public LocalDate getDato() {
+        return dato;
+    }
+
+    public double getVolumenILiter() {
+        return volumenILiter;
+    }
+
+    public Destillat getDestillat() {
+        return destillat;
+    }
+
+    public WhiskyProdukt getWhiskyProdukt() {
+        return whiskyProdukt;
+    }
+
+    @Override
+    public String toString() {
+        return "Aftapning: " + "aftapningsNr= " + aftapningsNr + '\'' + ", alkoholProcent= " + alkoholProcent +
+                ", dato= " + dato +
+                ", volumenILiter= " + volumenILiter +
+                ", destillat= " + destillat +
+                ", whiskyProdukt= " + whiskyProdukt
+                ;
+    }
 }

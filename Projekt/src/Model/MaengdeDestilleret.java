@@ -10,4 +10,25 @@ public class MaengdeDestilleret {
         this.destillering = destillering;
         this.destillat = destillat;
     }
+
+    public double getLiter() {
+        return liter;
+    }
+
+    public Destillering getDestillering() {
+        return destillering;
+    }
+
+    public Destillat getDestillat() {
+        return destillat;
+    }
+
+    @Override
+    public String toString() {
+        return "MaengdeDestilleret{" +
+                "liter=" + liter +
+                ", destillering=" + destillering +
+                ", destillat=" + destillat +
+                '}';
+    }
 }

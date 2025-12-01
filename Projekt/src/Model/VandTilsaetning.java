@@ -13,4 +13,30 @@ public class VandTilsaetning {
         this.vandKilde = vandKilde;
         this.whiskyProdukt = whiskyProdukt;
     }
+
+    public String getVandTilsaetning() {
+        return vandTilsaetning;
+    }
+
+    public double getVandMaengde() {
+        return vandMaengde;
+    }
+
+    public String getVandKilde() {
+        return vandKilde;
+    }
+
+    public WhiskyProdukt getWhiskyProdukt() {
+        return whiskyProdukt;
+    }
+
+    @Override
+    public String toString() {
+        return "VandTilsaetning{" +
+                "vandTilsaetning='" + vandTilsaetning + '\'' +
+                ", vandMaengde=" + vandMaengde +
+                ", vandKilde='" + vandKilde + '\'' +
+                ", whiskyProdukt=" + whiskyProdukt +
+                '}';
+    }
 }

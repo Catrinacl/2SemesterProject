@@ -16,4 +16,35 @@ public class Destillat {
         this.alkoholPc = alkoholPc;
         this.maengder = maengder;
     }
+
+    public String getDestilatID() {
+        return destilatID;
+    }
+
+    public String getNewMakeID() {
+        return newMakeID;
+    }
+
+    public double getTotalmaengeL() {
+        return totalmaengeL;
+    }
+
+    public double getAlkoholPc() {
+        return alkoholPc;
+    }
+
+    public List<MaengdeDestilleret> getMaengder() {
+        return maengder;
+    }
+
+    @Override
+    public String toString() {
+        return "Destillat{" +
+                "destilatID='" + destilatID + '\'' +
+                ", newMakeID='" + newMakeID + '\'' +
+                ", totalmaengeL=" + totalmaengeL +
+                ", alkoholPc=" + alkoholPc +
+                ", maengder=" + maengder +
+                '}';
+    }
 }

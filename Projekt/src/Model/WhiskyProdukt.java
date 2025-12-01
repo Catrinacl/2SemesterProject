@@ -25,6 +25,38 @@ public class WhiskyProdukt {
         this.aftapninger = new ArrayList<>();
     }
 
+    public String getProduktNr() {
+        return produktNr;
+    }
+
+    public String getNavn() {
+        return navn;
+    }
+
+    public String getBeskrivelse() {
+        return beskrivelse;
+    }
+
+    public double getSlutAlkoholProcent() {
+        return slutAlkoholProcent;
+    }
+
+    public boolean isErSingleCask() {
+        return erSingleCask;
+    }
+
+    public int getAntalFlasker() {
+        return antalFlasker;
+    }
+
+    public VandTilsaetning getVandTilsaetning() {
+        return vandTilsaetning;
+    }
+
+    public List<Aftapning> getAftapninger() {
+        return aftapninger;
+    }
+
     @Override
     public String toString() {
         return "Model.WhiskyProdukt{" +

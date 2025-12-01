@@ -23,4 +23,50 @@ public class Destillering {
         this.kommentar = kommentar;
         this.maengder = maengder;
     }
+
+    public String getDistilleringsID() {
+        return distilleringsID;
+    }
+
+    public LocalDate getStartDato() {
+        return startDato;
+    }
+
+    public LocalDate getSlutDato() {
+        return slutDato;
+    }
+
+    public String getMaltBatch() {
+        return maltBatch;
+    }
+
+    public String getKornsort() {
+        return kornsort;
+    }
+
+    public String getRygemateriale() {
+        return rygemateriale;
+    }
+
+    public String getKommentar() {
+        return kommentar;
+    }
+
+    public List<MaengdeDestilleret> getMaengder() {
+        return maengder;
+    }
+
+    @Override
+    public String toString() {
+        return "Destillering{" +
+                "distilleringsID='" + distilleringsID + '\'' +
+                ", startDato=" + startDato +
+                ", slutDato=" + slutDato +
+                ", maltBatch='" + maltBatch + '\'' +
+                ", kornsort='" + kornsort + '\'' +
+                ", rygemateriale='" + rygemateriale + '\'' +
+                ", kommentar='" + kommentar + '\'' +
+                ", maengder=" + maengder +
+                '}';
+    }
 }

@@ -16,4 +16,35 @@ public class Paafyldning {
         this.dato = dato;
         this.udfoertAf = udfoertAf;
     }
+
+    public String getPaafyldningstid() {
+        return paafyldningstid;
+    }
+
+    public double getMaengdeL() {
+        return maengdeL;
+    }
+
+    public double getAlkoholPcVedPaafyldning() {
+        return alkoholPcVedPaafyldning;
+    }
+
+    public LocalDate getDato() {
+        return dato;
+    }
+
+    public LagerMedarbejder getUdfoertAf() {
+        return udfoertAf;
+    }
+
+    @Override
+    public String toString() {
+        return "Paafyldning{" +
+                "paafyldningstid='" + paafyldningstid + '\'' +
+                ", maengdeL=" + maengdeL +
+                ", alkoholPcVedPaafyldning=" + alkoholPcVedPaafyldning +
+                ", dato=" + dato +
+                ", udfoertAf=" + udfoertAf +
+                '}';
+    }
 }

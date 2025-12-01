@@ -30,4 +30,14 @@ public class Reol {
     public Lager getLager() {
         return lager;
     }
+
+    @Override
+    public String toString() {
+        return "Reol{" +
+                "reolId='" + reolId + '\'' +
+                ", reolType='" + reolType + '\'' +
+                ", hylder=" + hylder +
+                ", lager=" + lager +
+                '}';
+    }
 }

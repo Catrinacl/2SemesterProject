@@ -49,4 +49,17 @@ public class Fad {
     public Hylde getHylde() {
         return hylde;
     }
+
+    @Override
+    public String toString() {
+        return "Fad{" +
+                "fadId='" + fadId + '\'' +
+                ", stoerrelseL=" + stoerrelseL +
+                ", traeType='" + traeType + '\'' +
+                ", tidligereIndhold='" + tidligereIndhold + '\'' +
+                ", status='" + status + '\'' +
+                ", paafyldninger=" + paafyldninger +
+                ", hylde=" + hylde +
+                '}';
+    }
 }
