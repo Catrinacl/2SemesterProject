@@ -1,3 +1,5 @@
+package Model;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +37,7 @@ public class LagerMedarbejder {
 
     @Override
     public String toString() {
-        return "LagerMedarbejder{" +
+        return "Model.LagerMedarbejder{" +
                 "medarbejderNr='" + medarbejderNr + '\'' +
                 ", navn='" + navn + '\'' +
                 ", paafyldninger=" + paafyldninger +

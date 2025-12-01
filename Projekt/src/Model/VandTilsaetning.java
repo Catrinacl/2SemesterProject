@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
+package Model;
 
 public class VandTilsaetning {
     private String vandTilsaetning;

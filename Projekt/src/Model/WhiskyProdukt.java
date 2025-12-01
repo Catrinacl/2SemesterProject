@@ -1,3 +1,5 @@
+package Model;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +27,7 @@ public class WhiskyProdukt {
 
     @Override
     public String toString() {
-        return "WhiskyProdukt{" +
+        return "Model.WhiskyProdukt{" +
                 "produktNr='" + produktNr + '\'' +
                 ", navn='" + navn + '\'' +
                 ", beskrivelse='" + beskrivelse + '\'' +

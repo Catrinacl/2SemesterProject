@@ -1,3 +1,5 @@
+package Model;
+
 public class MaengdeDestilleret {
     private double liter;
     private Destillering destillering;
