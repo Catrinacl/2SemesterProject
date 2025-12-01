@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.List;
 
 public class Fad {
@@ -7,10 +6,11 @@ public class Fad {
     private String traeType;
     private String tidligereIndhold;
     private String status;
-    private List<Paafyldning> paafyldninger = new ArrayList<>();
+    private List<Paafyldning> paafyldninger;
     private Hylde hylde;
 
-    public Fad(String fadId, double stoerrelseL, String traeType, String tidligereIndhold, String status, List<Paafyldning> paafyldninger, Hylde hylde) {
+    public Fad(String fadId, double stoerrelseL, String traeType, String tidligereIndhold,
+               String status, List<Paafyldning> paafyldninger, Hylde hylde) {
         this.fadId = fadId;
         this.stoerrelseL = stoerrelseL;
         this.traeType = traeType;
@@ -18,5 +18,33 @@ public class Fad {
         this.status = status;
         this.paafyldninger = paafyldninger;
         this.hylde = hylde;
+    }
+
+    public String getFadId() {
+        return fadId;
+    }
+
+    public double getStoerrelseL() {
+        return stoerrelseL;
+    }
+
+    public String getTraeType() {
+        return traeType;
+    }
+
+    public String getTidligereIndhold() {
+        return tidligereIndhold;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public List<Paafyldning> getPaafyldninger() {
+        return paafyldninger;
+    }
+
+    public Hylde getHylde() {
+        return hylde;
     }
 }
