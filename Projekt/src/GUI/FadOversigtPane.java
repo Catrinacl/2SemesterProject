@@ -62,9 +62,7 @@ public class FadOversigtPane extends GridPane {
 
         tableView.setMaxHeight(Double.MAX_VALUE);
         tableView.setMaxWidth(Double.MAX_VALUE);
-
-        this.add(new Label("Søg efter fad:"), 1, 0);
-
+        
     }
 
     public void updateFadOversigt(String searchText) {
