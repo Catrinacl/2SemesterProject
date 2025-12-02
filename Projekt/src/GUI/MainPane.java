@@ -39,7 +39,7 @@ public class MainPane extends Application{
 
         Tab tabDestilat = new Tab("Oversigt over destillater");
         tabPane.getTabs().add(tabDestilat);
-        DestilatOversigtPane destilatPane = new DestilatOversigtPane();
+        DestillatOversigtPane destilatPane = new DestillatOversigtPane();
         tabDestilat.setContent(destilatPane);
     }
 }
