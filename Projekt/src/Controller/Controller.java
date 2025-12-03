@@ -1,14 +1,23 @@
 package Controller;
 
+import GUI.Observer;
+
 import Model.*;
-import Storage.Storage;
+import Storage.ListStorage;
 
 import java.util.ArrayList;
 import java.time.LocalDate;
+import java.util.List;
 
 public abstract class Controller {
 
-    private static Storage storage = new Storage();
+    private static Storage storage;
+
+    public static void setStorage(Storage s) {
+        storage = s;
+    }
+
+
 
     public static Lager createLager(String lagerId, String lagerType, String adresse, ArrayList<Reol> reoler) {
         Lager lager = new Lager(lagerId, lagerType, adresse, reoler);
@@ -166,7 +175,21 @@ public abstract class Controller {
         return p;
     }
 
-    public static ArrayList<Paafyldning> getPaafyldninger() {
-        return storage.getPaafyldninger();
+    public static ArrayList<Paafyldning> getPaafyldninger() {return storage.getPaafyldninger();
+    }
+
+
+    // OBSERVER
+
+    private static final List<Observer> observers = new ArrayList<>();
+
+    public static void addObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    private static void notifyObservers() {
+        for (Observer observer : observers) {
+            observer.update();
+        }
     }
 }
