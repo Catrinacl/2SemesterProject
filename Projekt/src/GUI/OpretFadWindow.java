@@ -1,0 +1,7 @@
+package GUI;
+
+import javafx.stage.Stage;
+
+public class OpretFadWindow extends Stage {
+
+}
