@@ -3,7 +3,6 @@ package Controller;
 import GUI.Observer;
 
 import Model.*;
-import Storage.ListStorage;
 
 import java.util.ArrayList;
 import java.time.LocalDate;
@@ -68,10 +67,9 @@ public abstract class Controller {
                                            String maltBatch,
                                            String kornsort,
                                            String rygemateriale,
-                                           String kommentar,
-                                           ArrayList<MaengdeDestilleret> maengder) {
+                                           String kommentar) {
         Destillering d = new Destillering(distilleringsID, startDato, slutDato,
-                maltBatch, kornsort, rygemateriale, kommentar, maengder);
+                maltBatch, kornsort, rygemateriale, kommentar);
         storage.addDestillering(d);
         return d;
     }
@@ -81,11 +79,12 @@ public abstract class Controller {
     }
 
     public static Destillat createDestillat(String destilatID,
-                                     String newMakeID,
-                                     double totalmaengeL,
-                                     double alkoholPc,
-                                     ArrayList<MaengdeDestilleret> maengder) {
-        Destillat destillat = new Destillat(destilatID, newMakeID, totalmaengeL, alkoholPc, maengder);
+                                            String newMakeID,
+                                            double totalmaengeL,
+                                            double alkoholPc,
+                                            ArrayList<Destillering> destilleringer) {
+        Destillat destillat = new Destillat(destilatID, newMakeID, totalmaengeL, alkoholPc);
+
         storage.addDestillat(destillat);
         return destillat;
     }
