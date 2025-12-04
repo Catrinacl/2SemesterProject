@@ -18,8 +18,8 @@ public abstract class Controller {
 
 
 
-    public static Lager createLager(String lagerId, String lagerType, String adresse, ArrayList<Reol> reoler) {
-        Lager lager = new Lager(lagerId, lagerType, adresse, reoler);
+    public static Lager createLager(String lagerId, String lagerType, String adresse) {
+        Lager lager = new Lager(lagerId, lagerType, adresse);
         storage.addLager(lager);
         return lager;
     }
