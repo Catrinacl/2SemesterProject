@@ -82,7 +82,7 @@ public abstract class Controller {
                                             String newMakeID,
                                             double totalmaengeL,
                                             double alkoholPc,
-                                            ArrayList<Destillering> destilleringer) {
+                                            ArrayList<MaengdeDestilleret> maengdeDestillerets) {
         Destillat destillat = new Destillat(destilatID, newMakeID, totalmaengeL, alkoholPc);
 
         storage.addDestillat(destillat);
