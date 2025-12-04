@@ -12,8 +12,6 @@ import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
-
 public class OpretLagerWindow extends Stage {
 
     private TextField txfLagerId = new TextField();
@@ -55,8 +53,12 @@ public class OpretLagerWindow extends Stage {
     }
 
     private void opretLagerAction() {
-        ArrayList<Lager> lagerListe = new ArrayList<>();
-
+        if (txfLagerId.getText().isEmpty() || txfLagerType.getText().isEmpty() || txfAddresse.getText().isEmpty()) {
+            System.out.println("Alle felter skal udfyldes!");
+            return;
+        }
         Lager lager = Controller.createLager(txfLagerId.getText(), txfLagerType.getText(), txfAddresse.getText());
+
+        this.close();
     }
 }
