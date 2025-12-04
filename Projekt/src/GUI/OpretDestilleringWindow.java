@@ -2,16 +2,18 @@ package GUI;
 
 import Controller.Controller;
 import Model.Destillering;
-import Model.Lager;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.time.LocalDate;
 
 public class OpretDestilleringWindow extends Stage {
     private TextField txfDestilleringsId = new TextField();
@@ -21,8 +23,8 @@ public class OpretDestilleringWindow extends Stage {
     private TextField txfKornsort = new TextField();
     private TextField txfRygemateriale = new TextField();
     private TextField txfKommentar = new TextField();
-
     private Button btnOpret = new Button("Opret Destillering");
+    private ComboBox cbKornsort = new ComboBox<>();
 
     public OpretDestilleringWindow() {
         this.initModality(Modality.APPLICATION_MODAL);
@@ -53,7 +55,9 @@ public class OpretDestilleringWindow extends Stage {
         pane.add(new Label("Malt Batch:"), 0, 7);
         pane.add(txfMaltBatch, 0, 8);
         pane.add(new Label("Kornsort:"), 0, 9);
-        pane.add(txfKornsort, 0, 10);
+        cbKornsort.getItems().addAll("Byg", "Majs", "Hvede", "Rug");
+        cbKornsort.setValue("---");
+        pane.add(cbKornsort, 0, 10);
         pane.add(new Label("Rygemateriale:"), 0, 11);
         pane.add(txfRygemateriale, 0, 12);
         pane.add(new Label("Evt. kommentar:"), 0, 13);
@@ -72,7 +76,7 @@ public class OpretDestilleringWindow extends Stage {
             return;
         }
         Destillering destillering = Controller.createDestillering(txfDestilleringsId.getText(),
-                txfStartDato.getText(), txfSlutDato.getText(), txfMaltBatch.getText(),
+                LocalDate.parse(txfStartDato.getText()), LocalDate.parse(txfSlutDato.getText()), txfMaltBatch.getText(),
                 txfKornsort.getText(), txfRygemateriale.getText(), txfKommentar.getText());
         this.close();
     }
