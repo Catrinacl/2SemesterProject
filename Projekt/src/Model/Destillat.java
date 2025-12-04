@@ -8,13 +8,14 @@ public class Destillat {
     private String newMakeID;
     private double totalmaengeL;
     private double alkoholPc;
-    private ArrayList<MaengdeDestilleret> mængdeDestilleret;
+    private ArrayList<MaengdeDestilleret> maengdeDestilleret;
 
     public Destillat(String destilatID, String newMakeID, double totalmaengeL, double alkoholPc) {
         this.destilatID = destilatID;
         this.newMakeID = newMakeID;
         this.totalmaengeL = totalmaengeL;
         this.alkoholPc = alkoholPc;
+        this.maengdeDestilleret = new ArrayList<>();
     }
 
     public String getDestilatID() {
@@ -33,6 +34,17 @@ public class Destillat {
         return alkoholPc;
     }
 
+    public String gerMaengder() {
+        String result = "";
+
+        if (maengdeDestilleret != null) {
+            for (MaengdeDestilleret m : maengdeDestilleret) {
+                result += m.getLiter() + " L fra destillering"
+                        + m.getDestillering().getDistilleringsID() + "\n";
+            }
+        }
+        return result;
+    }
 
     @Override
     public String toString() {
@@ -41,6 +53,7 @@ public class Destillat {
                 ", newMakeID='" + newMakeID + '\'' +
                 ", totalmaengeL=" + totalmaengeL +
                 ", alkoholPc=" + alkoholPc +
+                ", maengdeDestilleret=" + maengdeDestilleret +
                 '}';
     }
 }
