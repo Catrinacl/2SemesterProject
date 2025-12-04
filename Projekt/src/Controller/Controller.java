@@ -94,9 +94,8 @@ public abstract class Controller {
     }
 
     public static MaengdeDestilleret createMaengdeDestilleret(double liter,
-                                                       Destillering destillering,
-                                                       Destillat destillat) {
-        MaengdeDestilleret m = new MaengdeDestilleret(liter, destillering, destillat);
+                                                       Destillering destillering) {
+        MaengdeDestilleret m = new MaengdeDestilleret(liter, destillering);
         storage.addMaengdeDestilleret(m);
         return m;
     }
