@@ -211,7 +211,5 @@ public class OpretFadWindow extends Stage {
         alert.showAndWait();
     }
 
-    public Fad getFad() {
-        return fad;
-    }
+
 }
