@@ -4,6 +4,7 @@ import Controller.Controller;
 import Model.Fad;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -11,7 +12,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.awt.*;
+import java.util.ArrayList;
 
 public class OpretFadWindow extends Stage {
     private Fad fad;
@@ -26,6 +27,8 @@ public class OpretFadWindow extends Stage {
 
     private final ListView<Fad> lvwFad = new ListView<>();
     private final ListView<Fad> lvwIndhold = new ListView<>();
+
+    private Button btnOpret = new Button("Opret Fad");
 
     public OpretFadWindow() {
         this.initModality(Modality.APPLICATION_MODAL);
@@ -79,5 +82,30 @@ public class OpretFadWindow extends Stage {
 
         pane.add(txfStatus, 1, 11);
         pane.add(new Label("Status"), 2, 11);
+
+        pane.add(btnOpret, 0, 12);
+        btnOpret.setOnAction(event -> this.opretFadAction());
+    }
+
+    private void opretFadAction() {
+        String fadId = txfFadNr.getText().trim();
+        double stoerrelseL = Double.parseDouble(txfStoerrelseL.getText().trim());
+        String traeTyoe = txfTraeType.getText().trim();
+        String tidligereIndhold = txfTidligereIndhold.getText().trim();
+        String status = txfStatus.getText().trim();
+
+        fad = Controller.createFad(
+                fadId,
+                stoerrelseL,
+                traeTyoe,
+                tidligereIndhold,
+                status,
+                new ArrayList<>(),  // ingen påfyldninger endnu
+                null // ingen hylde endnu
+        );
+    }
+
+    public Fad getFad() {
+        return fad;
     }
 }
