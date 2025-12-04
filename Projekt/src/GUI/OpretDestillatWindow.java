@@ -119,6 +119,6 @@ public class OpretDestillatWindow extends Stage {
         double alkoholPct = Double.parseDouble(txfAlkoholPc.getText());
 
         String selectedDestillering = lvwIndhold.getSelectionModel().getSelectedItem();
-        Destillat destillat1 = Controller.createDestillat(txfDestillatId.getText(),txfNewMakeId.getText(), totalMængde, alkoholPct, valgte);
+   //     Destillat destillat1 = Controller.createDestillat(txfDestillatId.getText(),txfNewMakeId.getText(), totalMængde, alkoholPct, valgte);
     }
 }
