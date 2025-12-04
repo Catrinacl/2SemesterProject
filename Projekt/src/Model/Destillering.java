@@ -11,9 +11,8 @@ public class Destillering {
     private String kornsort;
     private String rygemateriale; //nullable?
     private String kommentar;
-    private List<MaengdeDestilleret> maengder;
 
-    public Destillering(String distilleringsID, LocalDate startDato, LocalDate slutDato, String maltBatch, String kornsort, String rygemateriale, String kommentar, List<MaengdeDestilleret> maengder) {
+    public Destillering(String distilleringsID, LocalDate startDato, LocalDate slutDato, String maltBatch, String kornsort, String rygemateriale, String kommentar) {
         this.distilleringsID = distilleringsID;
         this.startDato = startDato;
         this.slutDato = slutDato;
@@ -21,7 +20,6 @@ public class Destillering {
         this.kornsort = kornsort;
         this.rygemateriale = rygemateriale;
         this.kommentar = kommentar;
-        this.maengder = maengder;
     }
 
     public String getDistilleringsID() {
@@ -52,9 +50,6 @@ public class Destillering {
         return kommentar;
     }
 
-    public List<MaengdeDestilleret> getMaengder() {
-        return maengder;
-    }
 
     @Override
     public String toString() {
@@ -65,8 +60,7 @@ public class Destillering {
                 ", maltBatch='" + maltBatch + '\'' +
                 ", kornsort='" + kornsort + '\'' +
                 ", rygemateriale='" + rygemateriale + '\'' +
-                ", kommentar='" + kommentar + '\'' +
-                ", maengder=" + maengder +
+                ", kommentar='" + kommentar +
                 '}';
     }
 }

@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Destillat {
@@ -7,14 +8,13 @@ public class Destillat {
     private String newMakeID;
     private double totalmaengeL;
     private double alkoholPc;
-    private List<MaengdeDestilleret> maengder;
+    private ArrayList<MaengdeDestilleret> mængdeDestilleret;
 
-    public Destillat(String destilatID, String newMakeID, double totalmaengeL, double alkoholPc, List<MaengdeDestilleret> maengder) {
+    public Destillat(String destilatID, String newMakeID, double totalmaengeL, double alkoholPc) {
         this.destilatID = destilatID;
         this.newMakeID = newMakeID;
         this.totalmaengeL = totalmaengeL;
         this.alkoholPc = alkoholPc;
-        this.maengder = maengder;
     }
 
     public String getDestilatID() {
@@ -33,9 +33,6 @@ public class Destillat {
         return alkoholPc;
     }
 
-    public List<MaengdeDestilleret> getMaengder() {
-        return maengder;
-    }
 
     @Override
     public String toString() {
@@ -44,7 +41,6 @@ public class Destillat {
                 ", newMakeID='" + newMakeID + '\'' +
                 ", totalmaengeL=" + totalmaengeL +
                 ", alkoholPc=" + alkoholPc +
-                ", maengder=" + maengder +
                 '}';
     }
 }
