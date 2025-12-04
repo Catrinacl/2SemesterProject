@@ -60,15 +60,10 @@ public class OpretPane extends GridPane {
         this.add(new Label("Opret Reol"), 0, 10);
         this.add(btnOpretReol, 0, 11);
 
-        /*
+
         btnOpretReol.setOnAction(event -> {
             OpretReolWindow opretReolWindow = new OpretReolWindow();
             opretReolWindow.showAndWait();
         });
-         */
-
-
-
     }
-
 }
