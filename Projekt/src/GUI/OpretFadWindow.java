@@ -27,7 +27,7 @@ public class OpretFadWindow extends Stage {
     private final TextField txfStatus = new TextField();
 
     // Påfyldning-input
-    private final TextField txfPaafyldningstid = new TextField();
+    private final TextField txfPaafyldningsId = new TextField();
     private final TextField txfMaengdeL = new TextField();
     private final TextField txfAlkoholPcVedPaafyldning = new TextField();
     private final DatePicker dpDato = new DatePicker(LocalDate.now());
@@ -85,7 +85,7 @@ public class OpretFadWindow extends Stage {
         pane.add(lblPaafyldningHeader, 0, 7, 2, 1);
 
         pane.add(new Label("Påfyldningstid:"), 0, 8);
-        pane.add(txfPaafyldningstid, 1, 8);
+        pane.add(txfPaafyldningsId, 1, 8);
 
         pane.add(new Label("Mængde (L):"), 0, 9);
         pane.add(txfMaengdeL, 1, 9);
@@ -116,13 +116,13 @@ public class OpretFadWindow extends Stage {
     }
 
     private void tilfoejPaafyldningAction() {
-        String paafyldningstid = txfPaafyldningstid.getText().trim();
+        String paafyldningsId = txfPaafyldningsId.getText().trim();
         String maengdeText = txfMaengdeL.getText().trim();
         String alkoholText = txfAlkoholPcVedPaafyldning.getText().trim();
         LocalDate dato = dpDato.getValue();
         LagerMedarbejder medarbejder = cbbMedarbejder.getValue();
 
-        if (paafyldningstid.isEmpty() || maengdeText.isEmpty() || alkoholText.isEmpty() || dato == null || medarbejder == null) {
+        if (paafyldningsId.isEmpty() || maengdeText.isEmpty() || alkoholText.isEmpty() || dato == null || medarbejder == null) {
             showAlert("Fejl", "Udfyld alle felter for påfyldning og vælg medarbejder.");
             return;
         }
@@ -141,13 +141,13 @@ public class OpretFadWindow extends Stage {
             return;
         }
 
-        Paafyldning p = new Paafyldning(paafyldningstid, maengdeL, alkoholPc, dato, medarbejder);
+        Paafyldning p = new Paafyldning(paafyldningsId, maengdeL, alkoholPc, dato, medarbejder);
         paafyldningerTilFad.add(p);
 
         opdaterPaafyldningerVisning();
 
         // ryd felter til næste påfyldning
-        txfPaafyldningstid.clear();
+        txfPaafyldningsId.clear();
         txfMaengdeL.clear();
         txfAlkoholPcVedPaafyldning.clear();
         dpDato.setValue(LocalDate.now());
@@ -159,7 +159,7 @@ public class OpretFadWindow extends Stage {
         for (Paafyldning p : paafyldningerTilFad) {
             String line = String.format(
                     "%s | %.1f L | %.1f%% | %s | %s",
-                    p.getPaafyldningstid(),
+                    p.getPaafyldningsId(),
                     p.getMaengdeL(),
                     p.getAlkoholPcVedPaafyldning(),
                     p.getDato(),
