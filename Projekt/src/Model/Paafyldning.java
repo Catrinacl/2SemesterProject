@@ -39,12 +39,7 @@ public class Paafyldning {
 
     @Override
     public String toString() {
-        return "Paafyldning{" +
-                "paafyldningstid='" + paafyldningstid + '\'' +
-                ", maengdeL=" + maengdeL +
-                ", alkoholPcVedPaafyldning=" + alkoholPcVedPaafyldning +
-                ", dato=" + dato +
-                ", udfoertAf=" + udfoertAf +
-                '}';
+        return maengdeL + " L - " + dato + " (" + alkoholPcVedPaafyldning + "%, udført af "
+                + udfoertAf.getAntalPaafyldninger() + ")";
     }
 }

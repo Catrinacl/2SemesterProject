@@ -33,11 +33,9 @@ public class Reol {
 
     @Override
     public String toString() {
-        return "Reol{" +
-                "reolId='" + reolId + '\'' +
-                ", reolType='" + reolType + '\'' +
-                ", hylder=" + hylder +
-                ", lager=" + lager +
-                '}';
+        int antalHylder = (hylder != null ? hylder.size() : 0);
+        String lagerNavn = (lager != null ? lager.getLagerId() : "ingen lager");
+
+        return reolId + " - " + reolType + " (" + antalHylder + " hylder, " + lagerNavn + ")";
     }
 }

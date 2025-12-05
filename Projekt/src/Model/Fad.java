@@ -57,6 +57,10 @@ public class Fad {
 
     @Override
     public String toString() {
-        return fadId + " (" + stoerrelseL + "L, " + traeType + ")";
+       String hyldeNavn = (hylde != null ? hylde.getHyldeId() : "ingen hylde");
+       int antalPaafyld = (paafyldninger != null ? paafyldninger.size() : 0);
+
+       return fadId + " - " + traeType + " (" + stoerrelseL + "L, "
+               + antalPaafyld + " påfyldninger, " + hyldeNavn + ")";
     }
 }

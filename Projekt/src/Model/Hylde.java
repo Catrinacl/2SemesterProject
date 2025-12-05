@@ -46,13 +46,10 @@ public class Hylde {
 
     @Override
     public String toString() {
-        return "Hylde{" +
-                "hyldeId='" + hyldeId + '\'' +
-                ", kapacitet=" + kapacitet +
-                ", placering='" + placering + '\'' +
-                ", hyldeType='" + hyldeType + '\'' +
-                ", fade=" + fade +
-                ", reol=" + reol +
-                '}';
+        int antalFade = (fade != null ? fade.size() : 0);
+        String reolNavn = (reol != null ? reol.getReolId() : "ingen reol");
+
+        return hyldeId + " - " + hyldeType +
+                " (" + antalFade + "/" + kapacitet + " fade, " + reolNavn + ")";
     }
 }

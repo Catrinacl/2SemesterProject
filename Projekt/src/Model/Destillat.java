@@ -56,12 +56,7 @@ public class Destillat {
 
     @Override
     public String toString() {
-        return "Destillat{" +
-                "destilatID='" + destilatID + '\'' +
-                ", newMakeID='" + newMakeID + '\'' +
-                ", totalmaengeL=" + totalmaengeL +
-                ", alkoholPc=" + alkoholPc +
-                ", maengdeDestilleret=" + maengdeDestilleret +
-                '}';
+        return destilatID + " - " + newMakeID +
+                " (" + totalmaengeL + " L, " + alkoholPc + "%)";
     }
 }
