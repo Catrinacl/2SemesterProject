@@ -57,14 +57,6 @@ public class Fad {
 
     @Override
     public String toString() {
-        return "Fad{" +
-                "fadId='" + fadId + '\'' +
-                ", stoerrelseL=" + stoerrelseL +
-                ", traeType='" + traeType + '\'' +
-                ", tidligereIndhold='" + tidligereIndhold + '\'' +
-                ", status='" + status + '\'' +
-                ", paafyldninger=" + paafyldninger +
-                ", hylde=" + hylde +
-                '}';
+        return fadId + " (" + stoerrelseL + "L, " + traeType + ")";
     }
 }

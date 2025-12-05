@@ -54,14 +54,6 @@ public class Destillering {
 
     @Override
     public String toString() {
-        return "Destillering{" +
-                "destilleringId='" + destilleringId + '\'' +
-                ", startDato=" + startDato +
-                ", slutDato=" + slutDato +
-                ", maltBatch='" + maltBatch + '\'' +
-                ", kornsort='" + kornsort + '\'' +
-                ", rygemateriale='" + rygemateriale + '\'' +
-                ", kommentar='" + kommentar +
-                '}';
+        return destilleringId + " – " + kornsort + " (" + startDato + " til " + slutDato + ")";
     }
 }
