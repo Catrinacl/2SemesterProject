@@ -11,6 +11,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static javafx.collections.FXCollections.observableArrayList;
 
 public class DestilleringOversigtPane extends GridPane implements Observer {
     private TableView<Destillering> tableView;
@@ -78,8 +81,19 @@ public class DestilleringOversigtPane extends GridPane implements Observer {
     }
 
     private void updateDestilleringOversigt(String searchText) {
-        List<Destillering> alle = Controller.getDestilleringer();
-        // TODO: filtrer og sæt tableView items her
+        List<Destillering> alleDestilleringer = Controller.getDestilleringer();
+
+        final String filterText = (searchText != null ? searchText : searchBar.getText())
+                .trim()
+                .toLowerCase();
+
+        List<Destillering> filteredList = alleDestilleringer.stream()
+                .filter(destillering ->
+                        filterText.isEmpty()
+                        || destillering.getDestilleringId().toLowerCase().contains(filterText))
+                .collect(Collectors.toList());
+
+        tableView.setItems(observableArrayList(filteredList));
     }
 
     @Override

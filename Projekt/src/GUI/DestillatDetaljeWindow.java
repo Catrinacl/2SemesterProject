@@ -2,6 +2,7 @@ package GUI;
 
 import Model.Destillat;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -20,5 +21,8 @@ public class DestillatDetaljeWindow extends Stage {
         pane.add(new Label("Total mængde i Liter: " + destillat.getTotalmaengeL()), 0, 2);
         pane.add(new Label("Alkohol i %: " + destillat.getAlkoholPc()), 0, 3);
         pane.add(new Label("Mængde destilleret: " + destillat.getMaengderToString()), 0, 4);
+
+        Scene scene = new Scene(pane);
+        this.setScene(scene);
     }
 }

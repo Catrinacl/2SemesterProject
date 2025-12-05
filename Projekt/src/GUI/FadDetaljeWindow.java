@@ -2,6 +2,7 @@ package GUI;
 
 import Model.Fad;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -20,6 +21,8 @@ public class FadDetaljeWindow extends Stage {
         pane.add(new Label("Træ type: " + fad.getTraeType()), 0, 2);
         pane.add(new Label("Tidligere indhold: " + fad.getTidligereIndhold()), 0, 3);
         pane.add(new Label("Status: " + fad.getStatus()), 0, 4);
-    }
 
+        Scene scene = new Scene(pane);
+        this.setScene(scene);
+    }
 }
