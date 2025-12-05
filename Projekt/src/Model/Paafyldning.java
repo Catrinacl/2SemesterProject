@@ -3,22 +3,23 @@ package Model;
 import java.time.LocalDate;
 
 public class Paafyldning {
-   private String paafyldningstid;
+   private String paafyldningsId;
    private double maengdeL;
    private double alkoholPcVedPaafyldning;
    private LocalDate dato;
    private LagerMedarbejder udfoertAf;
 
-    public Paafyldning(String paafyldningstid, double maengdeL, double alkoholPcVedPaafyldning, LocalDate dato, LagerMedarbejder udfoertAf) {
-        this.paafyldningstid = paafyldningstid;
+    public Paafyldning(String paafyldningsId, double maengdeL, double alkoholPcVedPaafyldning,
+                       LocalDate dato, LagerMedarbejder udfoertAf) {
+        this.paafyldningsId = paafyldningsId;
         this.maengdeL = maengdeL;
         this.alkoholPcVedPaafyldning = alkoholPcVedPaafyldning;
         this.dato = dato;
         this.udfoertAf = udfoertAf;
     }
 
-    public String getPaafyldningstid() {
-        return paafyldningstid;
+    public String getPaafyldningsId() {
+        return paafyldningsId;
     }
 
     public double getMaengdeL() {

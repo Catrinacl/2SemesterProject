@@ -186,12 +186,12 @@ public abstract class Controller {
         return storage.getLagerMedarbejdere();
     }
 
-    public static Paafyldning createPaafyldning(String paafyldningstid,
+    public static Paafyldning createPaafyldning(String paafyldningsId,
                                          double maengdeL,
                                          double alkoholPcVedPaafyldning,
                                          LocalDate dato,
                                          LagerMedarbejder udfoertAf) {
-        Paafyldning p = new Paafyldning(paafyldningstid, maengdeL,
+        Paafyldning p = new Paafyldning(paafyldningsId, maengdeL,
                 alkoholPcVedPaafyldning, dato, udfoertAf);
         storage.addPaafyldning(p);
         notifyObservers();
