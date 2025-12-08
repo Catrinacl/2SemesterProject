@@ -217,11 +217,31 @@ public abstract class Controller {
         Paafyldning p = new Paafyldning(paafyldningsId, maengdeL,
                 alkoholPcVedPaafyldning, dato, udfoertAf, fad, destillat);
         storage.addPaafyldning(p);
+        fad.addPaafyldning(p);
         notifyObservers();
         return p;
     }
 
     public static ArrayList<Paafyldning> getPaafyldninger() {return storage.getPaafyldninger();
+    }
+
+    // DELETE
+    public static void deleteFad(Fad fad) {
+        if (fad.getHylde() != null) {
+            fad.getHylde().getFade().remove(fad);
+        }
+        storage.deleteFad(fad);
+        notifyObservers();
+    }
+
+    // UPDATE
+    public static Fad updateFad(Fad fad, double stoerrelseL, String traeType, String tidligereIndhold, String status) {
+        fad.setStoerrelseL(stoerrelseL);
+        fad.setTraeType(traeType);
+        fad.setTidligereIndhold(tidligereIndhold);
+        fad.setStatus(status);
+        notifyObservers();
+        return fad;
     }
 
 
@@ -238,4 +258,5 @@ public abstract class Controller {
             observer.update();
         }
     }
+
 }

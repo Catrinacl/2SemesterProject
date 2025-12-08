@@ -52,6 +52,23 @@ public class Fad {
         return hylde;
     }
 
+
+    public void setStoerrelseL(double stoerrelseL) {
+        this.stoerrelseL = stoerrelseL;
+    }
+
+    public void setTraeType(String traeType) {
+        this.traeType = traeType;
+    }
+
+    public void setTidligereIndhold(String tidligereIndhold) {
+        this.tidligereIndhold = tidligereIndhold;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public void addPaafyldning(Paafyldning p) {
         paafyldninger.add(p);
     }
@@ -86,17 +103,12 @@ public class Fad {
     }
 
     public String getDestillatID() {
-        if (paafyldninger == null || paafyldninger.isEmpty()) {
-            return "Ingen destillat";
+        if (paafyldninger == null || paafyldninger.isEmpty()) return "";
+        String result = "";
+        for (Paafyldning p : paafyldninger) {
+            if (!result.isEmpty()) result += ", ";
+            result += p.getDestillat().getDestillatID();
         }
-
-        String destId = "";
-        for (int i = 0; i < paafyldninger.size(); i++) {
-            destId += paafyldninger.get(i).getPaafyldningsId(); // Eller getDestillat().getDestillatID()
-            if (i < paafyldninger.size() - 1) {
-                destId += ", ";
-            }
-        }
-        return destId;
+        return result;
     }
 }

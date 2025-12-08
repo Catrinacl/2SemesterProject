@@ -43,4 +43,6 @@ public interface Storage {
 
     ArrayList<LagerMedarbejder> getLagerMedarbejdere();
     void addLagerMedarbejder(LagerMedarbejder m);
+
+    void deleteFad(Fad fad);
 }

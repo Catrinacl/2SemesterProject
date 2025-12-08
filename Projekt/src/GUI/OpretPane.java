@@ -24,10 +24,9 @@ public class OpretPane extends GridPane {
     Button btnOpretPaafyldning = new Button("Opret");
 
 
-
-    private TableView<Fad> tableViewFad;
-    private TableView<Destillat> tableViewDestillat;
-    private TableView<Destillering> tableViewDestillering;
+    private TableView<Fad> tableViewFad = new TableView<>();
+    private TableView<Destillat> tableViewDestillat = new TableView<>();
+    private TableView<Destillering> tableViewDestillering = new TableView<>();
 
 
     public OpretPane() {
@@ -106,8 +105,8 @@ public class OpretPane extends GridPane {
             opretAftapningWindow.showAndWait();
         });
 
-        this.add(new Label("Opret Påfyldning"),1,9);
-        this.add(btnOpretPaafyldning,1,10);
+        this.add(new Label("Opret Påfyldning"),0,9);
+        this.add(btnOpretPaafyldning, 0,10);
         btnOpretPaafyldning.setOnAction(event ->{
             OpretPaafyldningWindow opretPaafyldningWindow = new OpretPaafyldningWindow();
             opretPaafyldningWindow.showAndWait();

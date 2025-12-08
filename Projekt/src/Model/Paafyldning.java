@@ -48,7 +48,7 @@ public class Paafyldning {
 
     @Override
     public String toString() {
-        return paafyldningsId + " - " + dato + " - " + maengdeL + " L (" + alkoholPcVedPaafyldning + "%), udført af "
-                + udfoertAf.getAntalPaafyldninger();
+        return paafyldningsId + " - " + destillat.getDestillatID() + " - " + dato + " - " + maengdeL + " L (" + alkoholPcVedPaafyldning + "%), udført af "
+                + udfoertAf.getNavn();
     }
 }

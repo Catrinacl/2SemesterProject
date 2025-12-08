@@ -1,5 +1,6 @@
 package GUI;
 
+import Controller.Controller;
 import Model.Fad;
 import Model.Paafyldning;
 import javafx.geometry.Insets;
@@ -13,9 +14,15 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-public class FadDetaljeWindow extends Stage {
+public class FadDetaljeWindow extends Stage implements Observer {
+
+    private final Fad fad;
+    private VBox boxPaafyldninger;
 
     public FadDetaljeWindow(Fad fad) {
+        this.fad = fad;
+        Controller.addObserver(this);
+
         this.setTitle("Detaljer for Fad " + fad.getFadId());
 
         GridPane pane = new GridPane();
@@ -32,19 +39,30 @@ public class FadDetaljeWindow extends Stage {
         lblPaafyldningsHistorik.setFont(Font.font("Verdana", FontWeight.BOLD, 11));
         pane.add(lblPaafyldningsHistorik, 0, 6);
 
-        VBox box = new VBox();
+        boxPaafyldninger = new VBox(5);
+        pane.add(boxPaafyldninger, 0, 7);
 
-        if (fad.getPaafyldninger() != null) {
-            for (Paafyldning p : fad.getPaafyldninger()) {
-                Label lbl = new Label(p.toString());
-                box.getChildren().add(lbl);
-            }
-        } else {
-            box.getChildren().add(new Label("Ingen påfyldninger."));
-        }
-        pane.add(box, 0, 7);
+        updatePaafyldningsListe();
 
         Scene scene = new Scene(pane);
         this.setScene(scene);
+    }
+
+    private void updatePaafyldningsListe() {
+        boxPaafyldninger.getChildren().clear();
+
+        if (fad.getPaafyldninger().isEmpty()) {
+            boxPaafyldninger.getChildren().add(new Label("Ingen påfyldninger."));
+            return;
+        }
+
+        for (Paafyldning p : fad.getPaafyldninger()) {
+            boxPaafyldninger.getChildren().add(new Label(p.toString()));
+        }
+    }
+
+    @Override
+    public void update() {
+        updatePaafyldningsListe();
     }
 }

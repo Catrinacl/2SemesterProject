@@ -115,4 +115,9 @@ public class ListStorage implements Storage {
     public ArrayList<LagerMedarbejder> getLagerMedarbejdere() {
         return lagerMedarbejdere;
     }
+
+    @Override
+    public void deleteFad(Fad fad) {
+        fade.remove(fad);
+    }
 }
