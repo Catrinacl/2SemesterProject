@@ -78,7 +78,8 @@ public class App {
                 100.0,
                 63.5,
                 LocalDate.of(2021, 6, 1),
-                m1
+                m1,
+                dest1
         );
 
         Paafyldning p2 = Controller.createPaafyldning(
@@ -86,7 +87,8 @@ public class App {
                 80.0,
                 63.5,
                 LocalDate.of(2021, 8, 15),
-                m2
+                m2,
+                dest2
         );
 
         Paafyldning p3 = Controller.createPaafyldning(
@@ -94,7 +96,8 @@ public class App {
                 120.0,
                 68.0,
                 LocalDate.of(2022, 2, 10),
-                m1
+                m1,
+                dest1
         );
 
         // 5) Lager / reoler / hylder

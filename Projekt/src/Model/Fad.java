@@ -1,6 +1,7 @@
 package Model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Fad {
@@ -19,7 +20,7 @@ public class Fad {
         this.traeType = traeType;
         this.tidligereIndhold = tidligereIndhold;
         this.status = status;
-        this.paafyldninger = paafyldninger;
+        this.paafyldninger = new ArrayList<>();
         this.hylde = hylde;
     }
 

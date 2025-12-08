@@ -8,17 +8,15 @@ public class Paafyldning {
    private double alkoholPcVedPaafyldning;
    private LocalDate dato;
    private LagerMedarbejder udfoertAf;
-   private Fad fad;
    private Destillat destillat;
 
     public Paafyldning(String paafyldningsId, double maengdeL, double alkoholPcVedPaafyldning,
-                       LocalDate dato, LagerMedarbejder udfoertAf, Fad fad, Destillat destillat) {
+                       LocalDate dato, LagerMedarbejder udfoertAf, Destillat destillat) {
         this.paafyldningsId = paafyldningsId;
         this.maengdeL = maengdeL;
         this.alkoholPcVedPaafyldning = alkoholPcVedPaafyldning;
         this.dato = dato;
         this.udfoertAf = udfoertAf;
-        this.fad = fad;
         this.destillat = destillat;
     }
 
