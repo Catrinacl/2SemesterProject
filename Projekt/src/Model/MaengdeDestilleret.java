@@ -19,9 +19,6 @@ public class MaengdeDestilleret {
 
     @Override
     public String toString() {
-        return "MaengdeDestilleret{" +
-                "liter=" + liter +
-                ", destillering=" + destillering +
-                '}';
+        return liter + " L fra destillering " + destillering.getDestilleringId();
     }
 }

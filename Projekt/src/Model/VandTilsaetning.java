@@ -32,11 +32,9 @@ public class VandTilsaetning {
 
     @Override
     public String toString() {
-        return "VandTilsaetning{" +
-                "vandTilsaetning='" + vandTilsaetning + '\'' +
-                ", vandMaengde=" + vandMaengde +
-                ", vandKilde='" + vandKilde + '\'' +
-                ", whiskyProdukt=" + whiskyProdukt +
-                '}';
+        String produktId = (whiskyProdukt != null ? whiskyProdukt.getProduktNr() : "ukendt produkt");
+
+        return vandTilsaetning + " - " + vandKilde +
+                " (" + vandMaengde + " L, " + produktId + ")";
     }
 }

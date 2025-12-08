@@ -39,11 +39,8 @@ public class Lager {
 
     @Override
     public String toString() {
-        return "Lager{" +
-                "lagerId='" + lagerId + '\'' +
-                ", lagerType='" + lagerType + '\'' +
-                ", adresse='" + adresse + '\'' +
-                ", reoler=" + reoler +
-                '}';
+        int antalReoler = (reoler != null ? reoler.size() : 0);
+        return lagerId + " - " + lagerType +
+                " (" + antalReoler + " reoler) ";
     }
 }

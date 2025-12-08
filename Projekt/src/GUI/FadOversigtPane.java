@@ -2,6 +2,7 @@ package GUI;
 
 import Controller.Controller;
 import Model.Fad;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -55,7 +56,8 @@ public class FadOversigtPane extends GridPane implements Observer {
 
         //Kolonne 2
         TableColumn<Fad, String> columnDestillatIndhold = new TableColumn<>("Indhold (Destillat ID)");
-        columnDestillatIndhold.setCellValueFactory(new PropertyValueFactory<>("destilatID"));
+
+
         columnDestillatIndhold.setPrefWidth(150);
 
         //Kolonne 3
@@ -78,8 +80,10 @@ public class FadOversigtPane extends GridPane implements Observer {
         final String filterText = (searchText != null ? searchText : searchBar.getText()).toLowerCase();
 
         List<Fad> filteredList = alleFade.stream()
-                // Filtrer kun hvis søgeteksten er mere end tom
-                .filter(fad -> filterText.isEmpty() || fad.getFadId().toLowerCase().contains(filterText))
+                .filter(fad -> filterText.isEmpty() ||
+                        fad.getFadId().toLowerCase().contains(filterText) ||
+                        fad.getDestillatID().toLowerCase().contains(filterText) ||
+                        String.valueOf(fad.getStoerrelseL()).contains(filterText))
                 .collect(Collectors.toList());
 
         // Opdater TableView

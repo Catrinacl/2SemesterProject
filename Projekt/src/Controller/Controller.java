@@ -64,6 +64,16 @@ public abstract class Controller {
         return storage.getFade();
     }
 
+    public static ArrayList<Fad> findFadeKlarTilAftapning() {
+        ArrayList<Fad> result = new ArrayList<>();
+        for (Fad f : storage.getFade()) {
+            if (f.erKlarTilAftapning()) {
+                result.add(f);
+            }
+        }
+        return result;
+    }
+
 
     public static Destillering createDestillering(String destilleringId,
                                            LocalDate startDato,
@@ -83,18 +93,18 @@ public abstract class Controller {
         return storage.getDestilleringer();
     }
 
-    public static Destillat createDestillat(String destilatID,
+    public static Destillat createDestillat(String destillatID,
                                             String newMakeID,
                                             double alkoholPc,
                                             ArrayList<MaengdeDestilleret> maengder) {
 
 
-        double totalmaengeL = 0;
+        double totalmaengdeL = 0;
         for (MaengdeDestilleret m : maengder) {
-            totalmaengeL += m.getLiter();
+            totalmaengdeL += m.getLiter();
         }
 
-        Destillat destillat = new Destillat(destilatID, newMakeID, totalmaengeL, alkoholPc);
+        Destillat destillat = new Destillat(destillatID, newMakeID, totalmaengdeL, alkoholPc);
 
         // tilføj alle maengder til destillatet
         for (MaengdeDestilleret m : maengder) {
@@ -199,13 +209,13 @@ public abstract class Controller {
         return storage.getLagerMedarbejdere();
     }
 
-    public static Paafyldning createPaafyldning(String paafyldningstid,
+    public static Paafyldning createPaafyldning(String paafyldningsId,
                                          double maengdeL,
                                          double alkoholPcVedPaafyldning,
                                          LocalDate dato,
-                                         LagerMedarbejder udfoertAf) {
-        Paafyldning p = new Paafyldning(paafyldningstid, maengdeL,
-                alkoholPcVedPaafyldning, dato, udfoertAf);
+                                         LagerMedarbejder udfoertAf, Fad fad, Destillat destillat) {
+        Paafyldning p = new Paafyldning(paafyldningsId, maengdeL,
+                alkoholPcVedPaafyldning, dato, udfoertAf, fad, destillat);
         storage.addPaafyldning(p);
         notifyObservers();
         return p;

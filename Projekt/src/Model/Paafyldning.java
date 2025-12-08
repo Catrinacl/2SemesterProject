@@ -3,22 +3,27 @@ package Model;
 import java.time.LocalDate;
 
 public class Paafyldning {
-   private String paafyldningstid;
+   private String paafyldningsId;
    private double maengdeL;
    private double alkoholPcVedPaafyldning;
    private LocalDate dato;
    private LagerMedarbejder udfoertAf;
+   private Fad fad;
+   private Destillat destillat;
 
-    public Paafyldning(String paafyldningstid, double maengdeL, double alkoholPcVedPaafyldning, LocalDate dato, LagerMedarbejder udfoertAf) {
-        this.paafyldningstid = paafyldningstid;
+    public Paafyldning(String paafyldningsId, double maengdeL, double alkoholPcVedPaafyldning,
+                       LocalDate dato, LagerMedarbejder udfoertAf, Fad fad, Destillat destillat) {
+        this.paafyldningsId = paafyldningsId;
         this.maengdeL = maengdeL;
         this.alkoholPcVedPaafyldning = alkoholPcVedPaafyldning;
         this.dato = dato;
         this.udfoertAf = udfoertAf;
+        this.fad = fad;
+        this.destillat = destillat;
     }
 
-    public String getPaafyldningstid() {
-        return paafyldningstid;
+    public String getPaafyldningsId() {
+        return paafyldningsId;
     }
 
     public double getMaengdeL() {
@@ -39,12 +44,7 @@ public class Paafyldning {
 
     @Override
     public String toString() {
-        return "Paafyldning{" +
-                "paafyldningstid='" + paafyldningstid + '\'' +
-                ", maengdeL=" + maengdeL +
-                ", alkoholPcVedPaafyldning=" + alkoholPcVedPaafyldning +
-                ", dato=" + dato +
-                ", udfoertAf=" + udfoertAf +
-                '}';
+        return paafyldningsId + " - " + dato + " - " + maengdeL + " L (" + alkoholPcVedPaafyldning + "%), udført af "
+                + udfoertAf.getAntalPaafyldninger();
     }
 }

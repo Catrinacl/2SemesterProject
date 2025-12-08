@@ -52,7 +52,7 @@ public class DestilleringOversigtPane extends GridPane implements Observer {
 
         // kolonne 1
         TableColumn<Destillering, String> colId = new TableColumn<>("Id");
-        colId.setCellValueFactory(new PropertyValueFactory<>("DestilleringId"));
+        colId.setCellValueFactory(new PropertyValueFactory<>("destilleringId"));
         colId.setPrefWidth(120);
 
         // kolonne 2
@@ -83,9 +83,7 @@ public class DestilleringOversigtPane extends GridPane implements Observer {
     private void updateDestilleringOversigt(String searchText) {
         List<Destillering> alleDestilleringer = Controller.getDestilleringer();
 
-        final String filterText = (searchText != null ? searchText : searchBar.getText())
-                .trim()
-                .toLowerCase();
+        final String filterText = (searchText != null ? searchText : searchBar.getText()).trim().toLowerCase();
 
         List<Destillering> filteredList = alleDestilleringer.stream()
                 .filter(destillering ->

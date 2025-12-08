@@ -37,10 +37,7 @@ public class LagerMedarbejder {
 
     @Override
     public String toString() {
-        return "Model.LagerMedarbejder{" +
-                "medarbejderNr='" + medarbejderNr + '\'' +
-                ", navn='" + navn + '\'' +
-                ", paafyldninger=" + paafyldninger +
-                '}';
+        int antal = paafyldninger != null ? paafyldninger.size() : 0;
+        return medarbejderNr + " – " + navn + " (" + antal + " påfyldninger)";
     }
 }
