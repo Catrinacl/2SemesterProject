@@ -47,6 +47,11 @@ public class MainPane extends Application{
         FadOversigtPane fadPane = new FadOversigtPane();
         tabFad.setContent(fadPane);
 
+        Tab tabProdukt = new Tab("Oversigt over whiskyprodukter");
+        tabPane.getTabs().add(tabProdukt);
+        ProduktOversigtPane produktOversigtPane = new ProduktOversigtPane();
+        tabProdukt.setContent(produktOversigtPane);
+
         Tab tabOpret = new Tab("Opret");
         tabPane.getTabs().add(tabOpret);
         OpretPane opretPane = new OpretPane();
