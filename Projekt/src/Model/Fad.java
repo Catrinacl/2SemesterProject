@@ -83,4 +83,19 @@ public class Fad {
        return fadId + " - " + traeType + " (" + stoerrelseL + "L, "
                + antalPaafyld + " påfyldninger, " + hyldeNavn + ")";
     }
+
+    public String getDestillatID() {
+        if (paafyldninger == null || paafyldninger.isEmpty()) {
+            return "Ingen destillat";
+        }
+
+        String destId = "";
+        for (int i = 0; i < paafyldninger.size(); i++) {
+            destId += paafyldninger.get(i).getPaafyldningsId(); // Eller getDestillat().getDestillatID()
+            if (i < paafyldninger.size() - 1) {
+                destId += ", ";
+            }
+        }
+        return destId;
+    }
 }

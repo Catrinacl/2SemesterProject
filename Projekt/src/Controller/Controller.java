@@ -200,9 +200,9 @@ public abstract class Controller {
                                          double maengdeL,
                                          double alkoholPcVedPaafyldning,
                                          LocalDate dato,
-                                         LagerMedarbejder udfoertAf) {
+                                         LagerMedarbejder udfoertAf, Fad fad, Destillat destillat) {
         Paafyldning p = new Paafyldning(paafyldningsId, maengdeL,
-                alkoholPcVedPaafyldning, dato, udfoertAf);
+                alkoholPcVedPaafyldning, dato, udfoertAf, fad, destillat);
         storage.addPaafyldning(p);
         notifyObservers();
         return p;
