@@ -77,7 +77,6 @@ public class Fad {
         if (paafyldninger == null || paafyldninger.isEmpty()) {
             return false;
         }
-
         //finder den tidligste dato
         LocalDate earliest = paafyldninger.get(0).getDato();
         for (Paafyldning p : paafyldninger) {
@@ -85,12 +84,18 @@ public class Fad {
                 earliest = p.getDato();
             }
         }
-
         // beregner datoen hvor fader er 3år gammel
         LocalDate treAarDato = earliest.plusYears(3);
 
-        //klar til aftapning hvis treAarDato er før || samme dag som i dag
         return !treAarDato.isAfter(LocalDate.now());
+    }
+
+    public boolean isErKlarTilAftapning() {
+        return erKlarTilAftapning();
+    }
+
+    public String getKlarTilAftapningTekst() {
+        return erKlarTilAftapning() ? "Ja" : "Nej";
     }
 
     @Override
@@ -111,4 +116,6 @@ public class Fad {
         }
         return result;
     }
+
+
 }
