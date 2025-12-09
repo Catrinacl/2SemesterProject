@@ -2,6 +2,7 @@ package GUI;
 
 import Controller.Controller;
 import Model.Fad;
+import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -83,27 +84,30 @@ public class FadOversigtPane extends GridPane implements Observer {
     public void updateFadOversigt(String searchText) {
         List<Fad> alleFade = Controller.getFade();
 
-        final String filterText = (searchText != null ? searchText : txfsearchBar.getText()).toLowerCase();
+        String filterText;
+        if (searchText != null) {
+            filterText = searchText.toLowerCase();
+        } else {
+            filterText = txfsearchBar.getText().toLowerCase();
+        }
 
         List<Fad> filteredList = new ArrayList<>();
 
-        for (Fad fad : alleFade) {
-            boolean skalVises = false;
+        if (filterText.isEmpty()) {
+            filteredList.addAll(alleFade);
+        } else {
+            for (Fad fad : alleFade) {
 
-            if (filterText.isEmpty()) {
-                skalVises = true;
-            }
-            else if (fad.getFadId().toLowerCase().contains(filterText)) {
-                skalVises = true;
-            }
-            else if (fad.getDestillatID() != null && fad.getDestillatID().toLowerCase().contains(filterText)) {
-                skalVises = true;
-            }
-            else if (String.valueOf(fad.getStoerrelseL()).contains(filterText)) {
-                skalVises = true;
-            }
-            if (skalVises) {
-                filteredList.add(fad);
+                String fadId = fad.getFadId().toLowerCase();
+                String destillatId = (fad.getDestillatID() != null ? fad.getDestillatID().toLowerCase() : "");
+                String stoerrelse = String.valueOf(fad.getStoerrelseL());
+
+                if (fadId.contains(filterText) ||
+                        destillatId.contains(filterText) ||
+                        stoerrelse.contains(filterText)) {
+
+                    filteredList.add(fad);
+                }
             }
         }
         tableView.setItems(observableArrayList(filteredList));
