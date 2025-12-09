@@ -2,8 +2,10 @@ package GUI;
 
 import Controller.Controller;
 import Model.*;
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
@@ -12,9 +14,13 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 public class ProduktHistorikWindow extends Stage implements Observer {
     private final WhiskyProdukt whiskyProdukt;
-    private ListView<VBox> listViewAftapninger;
+    private ListView<VBox> lvwAftapninger;
 
     public ProduktHistorikWindow(WhiskyProdukt selectedProdukt) {
         this.whiskyProdukt = selectedProdukt;
@@ -46,26 +52,29 @@ public class ProduktHistorikWindow extends Stage implements Observer {
         lblAftapning.setFont(Font.font("Verdana", FontWeight.BOLD, 11));
         pane.add(lblAftapning, 0, 8);
 
-        listViewAftapninger = new ListView<>();
-        listViewAftapninger.setMaxHeight(400);
-        listViewAftapninger.setPrefWidth(600);
+        lvwAftapninger = new ListView<>();
+        lvwAftapninger.setMaxHeight(400);
+        lvwAftapninger.setPrefWidth(600);
 
         updateAftapningsList();
 
-        pane.add(listViewAftapninger, 0, 9, 2, 1);
+        pane.add(lvwAftapninger, 0, 9, 2, 1);
 
         Scene scene = new Scene(pane);
         this.setScene(scene);
 
+        Button btnUdskrivTilFil = new Button("Udskriv til fil");
+        pane.add(btnUdskrivTilFil, 2, 1);
+        btnUdskrivTilFil.setOnAction(event -> this.udskrivProduktTilFilAction());
 
     }
 
     private void updateAftapningsList() {
-        listViewAftapninger.getItems().clear();
+        lvwAftapninger.getItems().clear();
 
         if (whiskyProdukt.getAftapninger().isEmpty()) {
             VBox noItems = new VBox(new Label("Der er ikke registreret nogle aftapninger"));
-            listViewAftapninger.getItems().add(noItems);
+            lvwAftapninger.getItems().add(noItems);
             return;
         }
 
@@ -107,19 +116,52 @@ public class ProduktHistorikWindow extends Stage implements Observer {
                         + destillering.getDestilleringId() + " - " + destillering.getKornsort() +
                                 ", MaltBatch: " + destillering.getMaltBatch()));
             }
-            listViewAftapninger.getItems().add(aftapningDetaljer);
+            lvwAftapninger.getItems().add(aftapningDetaljer);
         }
     }
 
     private Fad findDestillatetsFad(Destillat destillat) {
         for (Fad fad : Controller.getFade()) {
             for (Paafyldning paafyldning : fad.getPaafyldninger()) {
-                if (!fad.getPaafyldninger().isEmpty()) {
+                if (paafyldning.getDestillat() == destillat) {
                     return fad;
                 }
             }
         }
         return null;
+    }
+
+    private void udskrivProduktTilFilAction() {
+        try (PrintWriter printWriter = new PrintWriter(new FileWriter("Projekt\\src\\Gui\\FilProdukt.txt"))) {
+            printWriter.println("Produkt ID: " + whiskyProdukt.getProduktNr());
+            printWriter.println("Navn: " + whiskyProdukt.getNavn());
+            printWriter.println("Beskrivelse: " + whiskyProdukt.getBeskrivelse());
+            printWriter.println("Slut Alkohol %: " + whiskyProdukt.getSlutAlkoholProcent() + "%");
+            printWriter.println("Single Cask: " + (whiskyProdukt.isErSingleCask() ? "Ja" : "Nej"));
+            printWriter.println("Antal flasker: " + whiskyProdukt.getAntalFlasker());
+            printWriter.println();
+
+            for (Aftapning aftapning : whiskyProdukt.getAftapninger()) {
+                printWriter.println("Aftapning #" + aftapning.getAftapningsNr() + " - Dato: " + aftapning.getDato());
+                printWriter.println("Volumen: " + aftapning.getVolumenILiter() + " L, Alkohol: " + aftapning.getAlkoholProcent() + "%");
+
+                Destillat destillat = aftapning.getDestillat();
+                printWriter.println("Destillat ID: " + destillat.getDestillatID() + " (" + destillat.getAlkoholPc() + "%)");
+
+                Fad fad = findDestillatetsFad(destillat);
+                if (fad != null) {
+                    printWriter.println("Fad ID: " + fad.getFadId() + " (" + fad.getTraeType() + ")");
+                } else {
+                    printWriter.println("Ingen data om fadet");
+                }
+
+                printWriter.println();
+            }
+
+            System.out.println("Udskrevet til fil");
+        } catch (IOException e) {
+            System.out.println("Fejl ved skrivning til fil: " + e.getMessage());
+        }
     }
 
     @Override
