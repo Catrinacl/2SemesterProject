@@ -20,18 +20,6 @@ public class OpretPane extends GridPane {
     private TableView<Destillat> tableViewDestillat = new TableView<>();
     private TableView<Destillering> tableViewDestillering = new TableView<>();
 
-    private final Button btnOpretMedarbejder = new Button("Opret");
-    private final Button btnOpretDestillering = new Button("Opret");
-    private final Button btnOpretDestillat = new Button("Opret");
-    private final Button btnOpretPaafyldning = new Button("Opret");
-    private final Button btnOpretFad = new Button("Opret");
-    private final Button btnOpretAftapning = new Button("Opret");
-    private final Button btnOpretWhiskyProdukt = new Button("Opret");
-    private final Button btnTilføjVandtilsaetning = new Button("Tilføj");
-    private final Button btnOpretLager = new Button("Opret");
-    private final Button btnOpretReol = new Button("Opret");
-    private final Button btnOpretHylde = new Button("Opret");
-
 
     public OpretPane() {
         this.setPadding(new Insets(20));
@@ -43,6 +31,10 @@ public class OpretPane extends GridPane {
         lblOverskrift.setFont(new Font(30));
 
         VBox vbox1 = new VBox(15);
+        Button btnOpretMedarbejder = new Button("Opret");
+        Button btnOpretDestillering = new Button("Opret");
+        Button btnOpretDestillat = new Button("Opret");
+        Button btnOpretPaafyldning = new Button("Opret");
         vbox1.getChildren().addAll(
                 new Label("Opret Lagermedarbejder"), btnOpretMedarbejder,
                 new Label("Opret Destillering"), btnOpretDestillering,
@@ -51,6 +43,10 @@ public class OpretPane extends GridPane {
         );
 
         VBox vbox2 = new VBox(15);
+        Button btnOpretFad = new Button("Opret");
+        Button btnOpretAftapning = new Button("Opret");
+        Button btnOpretWhiskyProdukt = new Button("Opret");
+        Button btnTilføjVandtilsaetning = new Button("Tilføj");
         vbox2.getChildren().addAll(
                 new Label("Opret Fad"), btnOpretFad,
                 new Label("Opret Aftapning"), btnOpretAftapning,
@@ -59,6 +55,9 @@ public class OpretPane extends GridPane {
         );
 
         VBox vbox3 = new VBox(15);
+        Button btnOpretLager = new Button("Opret");
+        Button btnOpretReol = new Button("Opret");
+        Button btnOpretHylde = new Button("Opret");
         vbox3.getChildren().addAll(
                 new Label("Opret Lager"), btnOpretLager,
                 new Label("Opret og tilføj en reol til lager"), btnOpretReol,
