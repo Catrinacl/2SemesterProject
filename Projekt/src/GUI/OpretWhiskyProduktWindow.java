@@ -79,7 +79,7 @@ public class OpretWhiskyProduktWindow extends Stage {
         String antalFlaskerText = txfAntalFlasker.getText().trim();
 
         if (produktNr.isEmpty() || navn.isEmpty() || slutAlkText.isEmpty() || antalFlaskerText.isEmpty()) {
-            showAlert("Fejl", "Udfyld mindst Produkt nr, Navn, Slut alkohol % og Antal flasker.");
+            showAlert("Fejl", "Udfyld som minimum Produkt ID, Navn, Slut alkohol % og Antal flasker.");
             return;
         }
 

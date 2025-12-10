@@ -4,6 +4,7 @@ import Controller.Controller;
 import Model.Lager;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -54,10 +55,18 @@ public class OpretLagerWindow extends Stage {
 
     private void opretLagerAction() {
         if (txfLagerId.getText().isEmpty() || txfLagerType.getText().isEmpty() || txfAddresse.getText().isEmpty()) {
-            System.out.println("Alle felter skal udfyldes!");
+            showAlert("Felterne lager ID, type og adresse skal udfyldes");
             return;
         }
         Lager lager = Controller.createLager(txfLagerId.getText(), txfLagerType.getText(), txfAddresse.getText());
         this.close();
+    }
+
+    private void showAlert(String msg) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Fejl");
+        alert.setHeaderText(null);
+        alert.setContentText(msg);
+        alert.showAndWait();
     }
 }

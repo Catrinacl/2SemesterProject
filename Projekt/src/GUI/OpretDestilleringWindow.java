@@ -71,7 +71,7 @@ public class OpretDestilleringWindow extends Stage {
         if (txfDestilleringId.getText().isEmpty() || startDato == null ||
                 slutDato== null || txfMaltBatch.getText().isEmpty() ||
                 cbKornsort.getValue() == null) {
-            System.out.println("Alle felter skal udfyldes!");
+            showAlert("Felterne ID, Startdato, Slutdato, Malt Batch og kornsort skal alle udfyldes");
             return;
         }
 
@@ -86,5 +86,13 @@ public class OpretDestilleringWindow extends Stage {
         );
 
         this.close();
+    }
+
+    private void showAlert(String msg) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Fejl");
+        alert.setHeaderText(null);
+        alert.setContentText(msg);
+        alert.showAndWait();
     }
 }

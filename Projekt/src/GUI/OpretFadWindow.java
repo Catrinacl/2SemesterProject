@@ -73,7 +73,7 @@ public class OpretFadWindow extends Stage {
         String status = txfStatus.getText().trim();
 
         if (fadId.isEmpty() || stoerrelseText.isEmpty() || traeType.isEmpty()) {
-            showAlert("Fejl", "Udfyld mindst Fad Nr, Størrelse og Trætype.");
+            showAlert("Fejl", "Udfyld som minimum Fad Nr, Størrelse og Trætype.");
             return;
         }
 

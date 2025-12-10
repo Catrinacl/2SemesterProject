@@ -4,6 +4,7 @@ import Controller.Controller;
 import Model.LagerMedarbejder;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -48,7 +49,7 @@ public class OpretMedarbejderWindow extends Stage {
 
     private void opretMedarbejderAction() {
         if (txfMedarbejderID.getText().isEmpty() || txfNavn.getText().isEmpty()) {
-            System.out.println("Alle felter skal udfyldes!");
+            showAlert("Felterne ID og navn skal udfyldes");
             return;
         }
         LagerMedarbejder lagerMedarbejder = Controller.createLagerMedarbejder(txfMedarbejderID.getText(), txfNavn.getText());
@@ -56,4 +57,11 @@ public class OpretMedarbejderWindow extends Stage {
 
     }
 
+    private void showAlert(String msg) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Fejl");
+        alert.setHeaderText(null);
+        alert.setContentText(msg);
+        alert.showAndWait();
+    }
 }
