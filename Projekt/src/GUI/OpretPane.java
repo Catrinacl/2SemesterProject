@@ -13,16 +13,6 @@ import javafx.scene.text.Font;
 
 public class OpretPane extends GridPane {
 
-    Button btnOpretDestillering = new Button("Opret");
-    Button btnOpretFad = new Button("Opret");
-    Button btnOpretDestillat = new Button("Opret");
-    Button btnOpretReol = new Button("Opret");
-    Button btnOpretLager = new Button("Opret");
-    Button btnOpretHylde = new Button("Opret");
-    Button btnOpretWhiskyProdukt = new Button("Opret");
-    Button btnOpretAftapning = new Button("Opret");
-    Button btnOpretPaafyldning = new Button("Opret");
-
 
     private TableView<Fad> tableViewFad = new TableView<>();
     private TableView<Destillat> tableViewDestillat = new TableView<>();
@@ -39,6 +29,7 @@ public class OpretPane extends GridPane {
         lblOverskrift.setFont(new Font(30));
 
         this.add(new Label("Opret Destillering"), 0, 1);
+        Button btnOpretDestillering = new Button("Opret");
         this.add(btnOpretDestillering, 0, 2);
 
         btnOpretDestillering.setOnAction(event -> {
@@ -48,6 +39,7 @@ public class OpretPane extends GridPane {
         });
 
         this.add(new Label("Opret Fad"), 0, 3);
+        Button btnOpretFad = new Button("Opret");
         this.add(btnOpretFad, 0, 4);
 
         btnOpretFad.setOnAction(event -> {
@@ -57,6 +49,7 @@ public class OpretPane extends GridPane {
         });
 
         this.add(new Label("Opret Destillat"), 0, 5);
+        Button btnOpretDestillat = new Button("Opret");
         this.add(btnOpretDestillat, 0, 6);
 
         btnOpretDestillat.setOnAction(event -> {
@@ -65,51 +58,73 @@ public class OpretPane extends GridPane {
             tableViewDestillat.getItems().setAll(Controller.getDestillater());
         });
 
-        this.add(new Label("Opret Lager"), 1, 1);
-        this.add(btnOpretLager, 1, 2);
+        this.add(new Label("Opret Lager"), 0, 7);
+        Button btnOpretLager = new Button("Opret");
+        this.add(btnOpretLager, 0, 8);
 
         btnOpretLager.setOnAction(event -> {
             OpretLagerWindow opretLagerWindow = new OpretLagerWindow();
             opretLagerWindow.showAndWait();
         });
 
-        this.add(new Label("Opret Reol"), 1, 3);
-        this.add(btnOpretReol, 1, 4);
+        this.add(new Label("Opret Reol"), 0, 9);
+        Button btnOpretReol = new Button("Opret");
+        this.add(btnOpretReol, 0, 10);
 
 
         btnOpretReol.setOnAction(event -> {
             OpretReolWindow opretReolWindow = new OpretReolWindow();
             opretReolWindow.showAndWait();
         });
-        this.add(new Label("Opret Hylde"), 1,5);
-        this.add(btnOpretHylde, 1,6);
+        this.add(new Label("Opret Hylde"), 1,1);
+        Button btnOpretHylde = new Button("Opret");
+        this.add(btnOpretHylde, 1,2);
 
         btnOpretHylde.setOnAction(event ->{
             OpretHyldeWindow opretHyldeWindow = new OpretHyldeWindow();
             opretHyldeWindow.showAndWait();
         });
 
-        this.add(new Label("Opret Whisky Produkt"),0,7);
-        this.add(btnOpretWhiskyProdukt,0 ,8 );
+        this.add(new Label("Opret Whisky Produkt"),1,3);
+        Button btnOpretWhiskyProdukt = new Button("Opret");
+        this.add(btnOpretWhiskyProdukt,1 ,4 );
 
             btnOpretWhiskyProdukt.setOnAction(event -> {
             OpretWhiskyProduktWindow opretWhiskyProduktWindow = new OpretWhiskyProduktWindow();
             opretWhiskyProduktWindow.showAndWait();
         });
 
-        this.add(new Label("Opret Aftapning"),1,7);
-        this.add(btnOpretAftapning,1,8);
+        this.add(new Label("Opret Aftapning"),1,5);
+        Button btnOpretAftapning = new Button("Opret");
+        this.add(btnOpretAftapning,1,6);
 
             btnOpretAftapning.setOnAction(event ->{
             OpretAftapningWindow opretAftapningWindow = new OpretAftapningWindow();
             opretAftapningWindow.showAndWait();
         });
 
-        this.add(new Label("Opret Påfyldning"),0,9);
-        this.add(btnOpretPaafyldning, 0,10);
+        this.add(new Label("Opret Påfyldning"),1, 7);
+        Button btnOpretPaafyldning = new Button("Opret");
+        this.add(btnOpretPaafyldning, 1, 8);
         btnOpretPaafyldning.setOnAction(event ->{
             OpretPaafyldningWindow opretPaafyldningWindow = new OpretPaafyldningWindow();
             opretPaafyldningWindow.showAndWait();
+        });
+
+        this.add(new Label("Opret Lagermedarbejder"), 1, 9);
+        Button btnOpretMedarbejder = new Button("Opret");
+        this.add(btnOpretMedarbejder, 1, 10);
+        btnOpretMedarbejder.setOnAction(event -> {
+            OpretMedarbejderWindow opretMedarbejderWindow = new OpretMedarbejderWindow();
+            opretMedarbejderWindow.showAndWait();
+        });
+
+        this.add(new Label("Tilføj Vandtilsætning"), 2, 1);
+        Button btnTilføjVandtilsaetning = new Button("Tilføj");
+        this.add(btnTilføjVandtilsaetning, 2, 2);
+        btnTilføjVandtilsaetning.setOnAction(event -> {
+            OpretVandtilsaetningWindow opretVandtilsaetningWindow = new OpretVandtilsaetningWindow();
+            opretVandtilsaetningWindow.showAndWait();
         });
 
     }
