@@ -1,10 +1,11 @@
 package Model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Fad {
+public class Fad implements Serializable {
     private String fadId;
     private double stoerrelseL;
     private String traeType;

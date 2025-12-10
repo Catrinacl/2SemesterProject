@@ -1,9 +1,10 @@
 package Model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-public class Destillering {
+public class Destillering implements Serializable {
     private String destilleringId;
     private LocalDate startDato;
     private LocalDate slutDato;

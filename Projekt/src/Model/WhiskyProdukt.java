@@ -1,9 +1,10 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WhiskyProdukt {
+public class WhiskyProdukt implements Serializable {
     private String produktNr;
     private String navn;
     private String beskrivelse;

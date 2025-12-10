@@ -1,8 +1,9 @@
 package Model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Paafyldning {
+public class Paafyldning implements Serializable {
    private String paafyldningsId;
    private double maengdeL;
    private double alkoholPcVedPaafyldning;

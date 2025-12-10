@@ -1,8 +1,9 @@
 package Model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Aftapning {
+public class Aftapning implements Serializable {
     private String aftapningsNr;
     private double alkoholProcent;
     private LocalDate dato;

@@ -1,9 +1,10 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Destillat {
+public class Destillat implements Serializable {
     private String destillatID;
     private String newMakeID;
     private double totalmaengdeL;

@@ -21,7 +21,21 @@ public class App {
         // test data
         initStorage();
 
+        String fileName = "Projekt\\src\\Model\\Storage.ser";
+        Storage storageSerializable = ListStorage.loadStorage(fileName);
+        if (storageSerializable == null) {
+            storageSerializable = new ListStorage();
+            System.out.println("Empty ListStorage is created");
+            Controller.setStorage(storageSerializable);
+            initStorage();
+            System.out.println("Storage is initialized");
+        } else {
+            Controller.setStorage(storageSerializable);
+        }
+
         Application.launch(MainPane.class);
+
+        ListStorage.saveStorage(fileName, Controller.getStorage());
     }
 
     private static void initStorage() {

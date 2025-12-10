@@ -1,8 +1,9 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Hylde {
+public class Hylde implements Serializable {
     private String hyldeId;
     private int kapacitet;
     private String placering;

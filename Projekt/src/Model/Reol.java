@@ -1,8 +1,9 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Reol {
+public class Reol implements Serializable {
     private String reolId;
     private String reolType;
     private List<Hylde> hylder;

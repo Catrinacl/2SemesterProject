@@ -1,6 +1,8 @@
 package Model;
 
-public class MaengdeDestilleret {
+import java.io.Serializable;
+
+public class MaengdeDestilleret implements Serializable {
     private double liter;
     private Destillering destillering;
 

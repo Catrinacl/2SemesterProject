@@ -1,9 +1,10 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Lager {
+public class Lager implements Serializable {
     private String lagerId;
     private String lagerType;
     private String adresse;

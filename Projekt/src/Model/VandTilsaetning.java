@@ -1,6 +1,8 @@
 package Model;
 
-public class VandTilsaetning {
+import java.io.Serializable;
+
+public class VandTilsaetning implements Serializable {
     private String vandTilsaetningId;
     private double vandMaengdeL;
     private String vandKilde;
