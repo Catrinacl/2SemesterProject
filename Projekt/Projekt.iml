@@ -11,8 +11,8 @@
     <orderEntry type="library" exported="" name="jspecify" level="application" />
     <orderEntry type="library" exported="" scope="TEST" name="junit.jupiter.api" level="application" />
     <orderEntry type="library" exported="" name="openjfx.javafx.controls" level="application" />
-    <orderEntry type="library" name="junit.jupiter" level="project" />
-    <orderEntry type="module-library">
+    <orderEntry type="library" exported="" name="junit.jupiter" level="project" />
+    <orderEntry type="module-library" exported="">
       <library name="JUnit4">
         <CLASSES>
           <root url="jar://$USER_HOME$/.m2/repository/org/junit/jupiter/junit-jupiter/5.9.1/junit-jupiter-5.9.1.jar!/" />
@@ -28,6 +28,5 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="junit.jupiter1" level="project" />
   </component>
 </module>

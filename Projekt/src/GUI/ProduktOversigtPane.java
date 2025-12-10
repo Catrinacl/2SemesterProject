@@ -75,9 +75,21 @@ public class ProduktOversigtPane extends GridPane implements Observer {
         columnBeskrivelse.setCellValueFactory(new PropertyValueFactory<>("beskrivelse"));
         columnBeskrivelse.setPrefWidth(150);
 
-        TableColumn<WhiskyProdukt, String> columnErSingleCask = new TableColumn<>("Single Cask");
+        TableColumn<WhiskyProdukt, Boolean> columnErSingleCask = new TableColumn<>("Single Cask");
         columnErSingleCask.setCellValueFactory(new PropertyValueFactory<>("erSingleCask"));
         columnErSingleCask.setPrefWidth(150);
+
+        columnErSingleCask.setCellFactory(col -> new TableCell<WhiskyProdukt, Boolean>() {
+            @Override
+            protected void updateItem(Boolean item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(item ? "Ja" : "Nej");
+                }
+            }
+        });
 
         TableColumn<WhiskyProdukt, String> columnslutAlkoholProcent = new TableColumn<>("Slut alkohol %");
         columnslutAlkoholProcent.setCellValueFactory(new PropertyValueFactory<>("slutAlkoholProcent"));
