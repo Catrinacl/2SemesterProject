@@ -2,13 +2,13 @@ package GUI;
 
 import Controller.Controller;
 import Model.Fad;
-import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import static javafx.collections.FXCollections.observableArrayList;
 
 
@@ -36,29 +36,16 @@ public class FadOversigtPane extends GridPane implements Observer {
         this.add(tableView, 0, 1, 2, 1);
 
         this.add(btnRedigerFad, 0, 2);
-        btnRedigerFad.setOnAction(event -> this.redigerFadAction());
+        this.add(btnSletFad, 1, 2);
+        this.add(btnVisDetaljer, 2, 2);
 
+        btnSletFad.setOnAction(event -> sletFadAction());
+        btnRedigerFad.setOnAction(event -> redigerFadAction());
+        btnVisDetaljer.setOnAction(event -> visDetaljerAction());
 
-        this.updateFadOversigt(null);
         txfsearchBar.textProperty().addListener((obs, oldText, newText) -> updateFadOversigt(newText));
 
-        this.add(btnVisDetaljer, 2, 2);
-        btnVisDetaljer.setOnAction(event -> {
-            Fad selectedFad = tableView.getSelectionModel().getSelectedItem();
-
-            if (selectedFad == null) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Intet fad valgt");
-                alert.setHeaderText(null);
-                alert.setContentText("Vælg et fad i oversigten for at se detaljerne");
-                alert.showAndWait();
-                return;
-            }
-
-            new FadDetaljeWindow(selectedFad).show();
-        });
-
-
+        this.updateFadOversigt(null);
 
     }
 
@@ -80,45 +67,63 @@ public class FadOversigtPane extends GridPane implements Observer {
         columnStørrelse.setCellValueFactory(new PropertyValueFactory<>("stoerrelseL"));
         columnStørrelse.setPrefWidth(100);
 
+        TableColumn<Fad, Boolean> columnModen = new TableColumn<>("Klar til aftapning");
+        columnModen.setCellValueFactory(new PropertyValueFactory<>("klarTilAftapningTekst"));
+        columnModen.setPrefWidth(100);
+
         tableView.getColumns().add(columnFadId);
         tableView.getColumns().add(columnDestillatIndhold);
         tableView.getColumns().add(columnStørrelse);
+        tableView.getColumns().add(columnModen);
 
         tableView.setMaxHeight(Double.MAX_VALUE);
         tableView.setMaxWidth(Double.MAX_VALUE);
-
-        this.add(btnSletFad, 1, 2);
-
-        btnSletFad.setOnAction(event -> {
-            Fad selectedFad = tableView.getSelectionModel().getSelectedItem();
-            if (selectedFad != null) {
-                Controller.deleteFad(selectedFad);
-            } else {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Intet fad valgt");
-                alert.setHeaderText(null);
-                alert.setContentText("Vælg et fad i oversigten for at slette");
-                alert.showAndWait();
-            }
-
-        });
         
     }
 
     public void updateFadOversigt(String searchText) {
         List<Fad> alleFade = Controller.getFade();
 
-        final String filterText = (searchText != null ? searchText : txfsearchBar.getText()).toLowerCase();
+        String filterText;
+        if (searchText != null) {
+            filterText = searchText.toLowerCase();
+        } else {
+            filterText = txfsearchBar.getText().toLowerCase();
+        }
 
-        List<Fad> filteredList = alleFade.stream()
-                .filter(fad -> filterText.isEmpty() ||
-                        fad.getFadId().toLowerCase().contains(filterText) ||
-                        fad.getDestillatID() != null && fad.getDestillatID().toLowerCase().contains(filterText) ||
-                        String.valueOf(fad.getStoerrelseL()).contains(filterText))
-                .collect(Collectors.toList());
+        List<Fad> filteredList = new ArrayList<>();
 
-        // Opdater TableView
+        if (filterText.isEmpty()) {
+            filteredList.addAll(alleFade);
+        } else {
+            for (Fad fad : alleFade) {
+
+                String fadId = fad.getFadId().toLowerCase();
+                String destillatId = (fad.getDestillatID() != null ? fad.getDestillatID().toLowerCase() : "");
+                String stoerrelse = String.valueOf(fad.getStoerrelseL());
+
+                if (fadId.contains(filterText) ||
+                        destillatId.contains(filterText) ||
+                        stoerrelse.contains(filterText)) {
+
+                    filteredList.add(fad);
+                }
+            }
+        }
         tableView.setItems(observableArrayList(filteredList));
+    }
+
+    private void sletFadAction() {
+        Fad selectedFad = tableView.getSelectionModel().getSelectedItem();
+        if (selectedFad != null) {
+            Controller.deleteFad(selectedFad);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Intet fad valgt");
+            alert.setHeaderText(null);
+            alert.setContentText("Vælg et fad i oversigten for at slette");
+            alert.showAndWait();
+        }
     }
 
     private void redigerFadAction() {
@@ -136,6 +141,19 @@ public class FadOversigtPane extends GridPane implements Observer {
         redigerFadWindow.showAndWait();
 
         updateFadOversigt(null);
+    }
+
+    private void visDetaljerAction() {
+        Fad selectedFad = tableView.getSelectionModel().getSelectedItem();
+        if (selectedFad == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Intet fad valgt");
+            alert.setHeaderText(null);
+            alert.setContentText("Vælg et fad i oversigten for at se detaljerne");
+            alert.showAndWait();
+            return;
+        }
+        new FadDetaljeWindow(selectedFad).show();
     }
 
 
