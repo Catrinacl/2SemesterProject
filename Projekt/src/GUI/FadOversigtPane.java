@@ -2,11 +2,13 @@ package GUI;
 
 import Controller.Controller;
 import Model.Fad;
-import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+
 import java.util.ArrayList;
 import java.util.List;
 import static javafx.collections.FXCollections.observableArrayList;
@@ -35,9 +37,12 @@ public class FadOversigtPane extends GridPane implements Observer {
         this.initContent();
         this.add(tableView, 0, 1, 2, 1);
 
-        this.add(btnRedigerFad, 0, 2);
-        this.add(btnSletFad, 1, 2);
-        this.add(btnVisDetaljer, 2, 2);
+        HBox buttonBox = new HBox(15);
+        buttonBox.getChildren().addAll(btnRedigerFad, btnSletFad, btnVisDetaljer);
+        buttonBox.setPadding(new Insets(10, 0, 0, 0));
+        buttonBox.setAlignment(Pos.CENTER_LEFT);
+
+        this.add(buttonBox, 0, 2, 2, 1);
 
         btnSletFad.setOnAction(event -> sletFadAction());
         btnRedigerFad.setOnAction(event -> redigerFadAction());

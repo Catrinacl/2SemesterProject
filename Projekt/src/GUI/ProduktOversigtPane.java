@@ -4,9 +4,11 @@ import Controller.Controller;
 import Model.WhiskyProdukt;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,13 +39,11 @@ public class ProduktOversigtPane extends GridPane implements Observer {
         this.initContent();
         this.add(tableView, 0, 1, 2, 1);
 
-        this.add(btnRedigerProdukt, 0, 2);
         btnRedigerProdukt.setOnAction(event -> this.redigerProduktAction());
 
         this.updateProduktOversigt(null);
         txfsearchBar.textProperty().addListener((obs, oldText, newText) -> updateProduktOversigt(newText));
 
-        this.add(btnVisHistorik, 2, 2);
         btnVisHistorik.setOnAction(event -> {
             WhiskyProdukt selectedProdukt = tableView.getSelectionModel().getSelectedItem();
 
@@ -58,6 +58,26 @@ public class ProduktOversigtPane extends GridPane implements Observer {
 
             new ProduktHistorikWindow(selectedProdukt).show();
         });
+
+        btnSletValgteProdukt.setOnAction(event -> {
+            WhiskyProdukt selectedProdukt = tableView.getSelectionModel().getSelectedItem();
+            if (selectedProdukt != null) {
+                Controller.deleteProdukt(selectedProdukt);
+            } else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Intet produkt valgt");
+                alert.setHeaderText(null);
+                alert.setContentText("Vælg et produkt i oversigten for at slette");
+                alert.showAndWait();
+            }
+
+        });
+
+        HBox buttonBox = new HBox(15);
+        buttonBox.getChildren().addAll(btnRedigerProdukt, btnSletValgteProdukt, btnVisHistorik);
+        buttonBox.setPadding(new Insets(10, 0, 0, 0));
+        buttonBox.setAlignment(Pos.CENTER_LEFT);
+        this.add(buttonBox, 0, 2, 2, 1);
     }
 
     private void initContent() {
@@ -108,23 +128,6 @@ public class ProduktOversigtPane extends GridPane implements Observer {
 
         tableView.setMaxHeight(Double.MAX_VALUE);
         tableView.setMaxWidth(Double.MAX_VALUE);
-
-        this.add(btnSletValgteProdukt, 1, 2);
-        btnSletValgteProdukt.setOnAction(event -> {
-            WhiskyProdukt selectedProdukt = tableView.getSelectionModel().getSelectedItem();
-            if (selectedProdukt != null) {
-                Controller.deleteProdukt(selectedProdukt);
-            } else {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Intet produkt valgt");
-                alert.setHeaderText(null);
-                alert.setContentText("Vælg et produkt i oversigten for at slette");
-                alert.showAndWait();
-            }
-
-        });
-
-
     }
 
     public void updateProduktOversigt(String searchText) {
