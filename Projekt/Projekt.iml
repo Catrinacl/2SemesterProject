@@ -8,7 +8,6 @@
     <orderEntry type="jdk" jdkName="openjdk-21" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="jspecify" level="application" />
-    <orderEntry type="library" exported="" name="junit.jupiter" level="application" />
     <orderEntry type="library" exported="" scope="TEST" name="junit.jupiter.api" level="application" />
     <orderEntry type="library" exported="" name="openjfx.javafx.controls" level="application" />
     <orderEntry type="library" name="junit.jupiter" level="project" />
@@ -28,5 +27,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="junit.jupiter1" level="project" />
   </component>
 </module>
