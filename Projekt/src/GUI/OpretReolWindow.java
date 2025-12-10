@@ -49,7 +49,7 @@ public class OpretReolWindow extends Stage {
         cbLager.getItems().addAll(Controller.getLagre());
         cbLager.setPromptText("---");
 
-        pane.add(btnOpret, 0, 12);
+        pane.add(btnOpret, 0, 7);
         btnOpret.setOnAction(event -> this.opretReolAction());
     }
 

@@ -59,7 +59,7 @@ public class OpretFadWindow extends Stage {
         pane.add(txfStatus, 1, 5);
 
         // Opret-knap
-        pane.add(btnOpret, 0, 18);
+        pane.add(btnOpret, 0, 6);
         btnOpret.setOnAction(event -> opretFadAction());
     }
 

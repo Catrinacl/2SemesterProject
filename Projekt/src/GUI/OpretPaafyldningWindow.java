@@ -83,7 +83,7 @@ public class OpretPaafyldningWindow extends Stage {
         lvwFad.getItems().setAll(Controller.getFade());
         lvwFad.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
-        pane.add(btnOpret, 0, 18);
+        pane.add(btnOpret, 0, 12);
         btnOpret.setOnAction(event -> opretPaafyldningAction());
 
     }
